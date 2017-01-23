@@ -3,3 +3,7 @@
   <p>Ingredients: <%= @recipe.ingredients %></p>
   <p>Directions: <%= @recipe.directions %></p>
   <p>Prep time: <%= @recipe.prep_time %></p>
+
+  <%= form_tag "/recipes/#{@recipe.id}", method: :delete do %>
+  <input type="submit" value="Destroy recipe">
+  <% end %>
