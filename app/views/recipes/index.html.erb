@@ -1,11 +1,13 @@
-<h1>All Recipes:</h1>
+<div class="jumbotron text-center">
+  <h1>All Recipes</h1>
+</div>
 
 <% @recipes.each_slice(3) do |three_recipes| %>
   <div class="row">
     <% three_recipes.each do |recipe| %>
       <div class="col-md-4 col-sm-4">
         <div class="well">
-          <a href="/recipes/<%= recipe.id %>">Title: <%= recipe.title %></a>
+          <h2>Title: <a href="/recipes/<%= recipe.id %>"><%= recipe.title %></a></h2>
           <p>Chef: <%= recipe.chef %></p>
           <p>Ingredients: <%= recipe.ingredients %></p>
           <p>Directions: <%= recipe.directions %></p>

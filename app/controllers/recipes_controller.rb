@@ -36,8 +36,12 @@ class RecipesController < ApplicationController
   def update
     recipe_id = params[:id]
     recipe = Recipe.find_by(id: recipe_id)
-    recipe.title = params[:title]
-    recipe.save
+    recipe.update(title: params[:title],
+      chef: params[:chef],
+      ingredients: params[:ingredients],
+      directions: params[:directions],
+      image: params[:image],
+      prep_time: params[:prep_time])
     flash[:success] = "Recipe successfully updated!"
     redirect_to "/recipes/#{recipe.id}"
   end
