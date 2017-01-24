@@ -4,6 +4,8 @@
   <p>Directions: <%= @recipe.directions %></p>
   <p>Prep time: <%= @recipe.prep_time %></p>
 
+  <a class="btn btn-default" href="/recipes/<%= @recipe.id %>/edit" role="button">Edit</a>
+
   <%= form_tag "/recipes/#{@recipe.id}", method: :delete do %>
-  <input type="submit" value="Destroy recipe">
+  <input class="btn btn-default" type="submit" value="Destroy recipe">
   <% end %>
