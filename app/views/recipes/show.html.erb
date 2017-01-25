@@ -1,8 +1,21 @@
 <p>Title: <%= @recipe.title %></p>
   <p>Chef: <%= @recipe.chef %></p>
-  <p>Ingredients: <%= @recipe.ingredients %></p>
-  <p>Directions: <%= @recipe.directions %></p>
-  <p>Prep time: <%= @recipe.prep_time %></p>
+  <p>Ingredients: 
+    <ul>
+      <% @recipe.ingredients_list.each do |ingredient| %>
+        <li><%= ingredient %></li>
+      <% end %>
+    </ul>
+  </p>
+  <p>Directions: 
+    <ol>
+      <% @recipe.directions_list.each do |direction| %>
+        <li><%= direction %></li>
+      <% end %>
+    </ol>
+  </p>
+  <p>Prep time: <%= @recipe.friendly_prep_time %></p>
+  <p>Created at: <%= @recipe.friendly_created_at %></p>
 
   <a class="btn btn-default" href="/recipes/<%= @recipe.id %>/edit" role="button">Edit</a>
 
