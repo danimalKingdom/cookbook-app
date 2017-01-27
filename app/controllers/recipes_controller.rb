@@ -2,15 +2,23 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
-    sort_attr = params[:sort] #comes from query params
-    if sort_attr #if a query parameter with the key "sort" exists
-      @recipes = Recipe.all.order(sort_attr)
+    if params[:sort] #if a query parameter with the key "sort" exists
+      @recipes = Recipe.all.order(params[:sort] => params[:sort_order])
     end
-    render "index.html.erb"
+    sort_quick = params[:quick]
+    if sort_quick
+      @recipes = Recipe.where("prep_time < ?", 60)
+    end
+  end
+
+  def search
+    search_term = params[:search]
+    #ping database to find recipes that are similar to search term
+    @recipes = Recipe.where("title LIKE ?", "%#{search_term}%")
+    render :index
   end
 
   def new
-    render "new.html.erb"
   end
 
   def create
@@ -28,13 +36,14 @@ class RecipesController < ApplicationController
   def show
     recipe_id = params[:id]
     @recipe = Recipe.find_by(id: recipe_id)
-    render "show.html.erb"
+    if recipe_id == "random"
+      @recipe = Recipe.all.sample
+    end
   end
 
   def edit
     recipe_id = params[:id] 
     @recipe = Recipe.find_by(id: recipe_id)
-    render "edit.html.erb"
   end
 
   def update

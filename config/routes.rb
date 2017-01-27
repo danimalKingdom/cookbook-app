@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get "/recipes" => "recipes#index"
 
+  post "/search" => "recipes#search"
+
   get "/recipes/new" => "recipes#new"
 
   post "/recipes" => "recipes#create"
