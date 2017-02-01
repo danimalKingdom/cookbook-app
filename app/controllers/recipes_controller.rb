@@ -28,7 +28,8 @@ class RecipesController < ApplicationController
       ingredients: params[:ingredients],
       directions: params[:directions],
       image: params[:image],      
-      prep_time: params[:prep_time])
+      prep_time: params[:prep_time],
+      user_id: params[:user_id])
     flash[:success] = "Recipe successfully created!"
     redirect_to "/recipes/#{recipe.id}"
   end

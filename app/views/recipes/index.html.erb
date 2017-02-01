@@ -1,5 +1,10 @@
 <div class="jumbotron text-center">
   <h1>All Recipes</h1>
+  
+  <% if current_user %>
+    <h3>Current User: <%= current_user.email %></h3>
+  <% end %>
+
   <a href="/recipes?sort=prep_time&sort_order=ASC">Sort by ascending prep time</a>
   <a href="/recipes?sort=prep_time&sort_order=DESC">Sort by descending prep time</a>
 </div>
