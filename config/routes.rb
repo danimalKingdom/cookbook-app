@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get "/" => "recipes#index"
+
   get "/recipes" => "recipes#index"
 
   post "/search" => "recipes#search"
