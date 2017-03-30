@@ -3,6 +3,9 @@ class Recipe < ActiveRecord::Base
   belongs_to :user
   has_many :categorized_recipes
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   def ingredients_list
     return ingredients.split(",")
   end
